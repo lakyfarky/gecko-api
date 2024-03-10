@@ -12,7 +12,7 @@ fi
 
 # Run the first script
 echo "Running idena.py script..."
-python3 idena.py
+nohup python3 idena.py >> output.log 2>&1 &
 
 # Wait for the specified pause duration
 echo "Pausing for $PAUSE_DURATION seconds..."
@@ -20,7 +20,7 @@ sleep $PAUSE_DURATION
 
 # Run the second script (replace second_script.py with your actual script name)
 echo "Running second script..."
-python3 analyze.py
+nohup python3 analyze.py >> output.log 2>&1 &
 
 echo "Scripts execution completed."
 
