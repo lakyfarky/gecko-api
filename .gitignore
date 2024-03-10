@@ -1,7 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.ipynb
 *.py[cod]
 *$py.class
 api_key
 
-*.ipynb
+
