@@ -72,11 +72,10 @@ def analyze_price_changes(data, analysis_period=timedelta(hours=1), interval=tim
     
     return significant_changes
 
-def main(pause_duration):
+def main(pause_duration, api_key):
     while True:
         # Your main code logic here
         print("Running analysis...")
-        api_key = read_api_key("api_key.txt")
         file_path = 'Idena.txt'
         data = read_and_process_data(file_path)
         significant_changes = analyze_price_changes(data)
@@ -94,5 +93,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Monitor and analyze price changes.")
     parser.add_argument("-p", "--pause", type=int, default=60, help="Pause duration between iterations in seconds.")
     args = parser.parse_args()
-    
-    main(args.pause)
+    api_key = read_api_key("api_key.txt")
+    main(args.pause,api_key)

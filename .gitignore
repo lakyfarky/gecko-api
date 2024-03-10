@@ -3,6 +3,6 @@ __pycache__/
 *.ipynb
 *.py[cod]
 *$py.class
-api_key
+api_key.txt
 
 
