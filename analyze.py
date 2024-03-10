@@ -19,6 +19,24 @@ def send_notification(API_KEY, subject, message):
     print(response.body)
     print(response.headers)
 
+def read_api_key(filepath):
+    """Reads the first line of a file and uses it as the API key."""
+    try:
+        with open(filepath, 'r') as file:
+            api_key = file.readline().strip()  # Read the first line and remove any trailing newline characters
+        return api_key
+    except FileNotFoundError:
+        print("API key file not found.")
+        return None
+
+# Example usage
+api_key_filepath = 'Idena.txt'
+api_key = read_api_key(api_key_filepath)
+if api_key:
+    print("API Key:", api_key)
+else:
+    print("Failed to read API key.")
+
 def read_and_process_data(file_path):
     # Load data, assuming it's separated by spaces
     data = pd.read_csv('Idena.txt', delimiter=',', names=['DateTime', 'Token', 'Price', ], parse_dates=['DateTime'])
