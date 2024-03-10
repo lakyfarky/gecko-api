@@ -39,7 +39,7 @@ else:
 def read_and_process_data(file_path):
     # Load data, assuming it's separated by spaces
     data = pd.read_csv('Idena.txt', delimiter=',', names=['DateTime', 'Token', 'Price', ], parse_dates=['DateTime'])
-    print(data)
+    # print(data)
     # Convert timestamp to datetime
     data['DateTime'] = pd.to_datetime(data['DateTime'])
     
