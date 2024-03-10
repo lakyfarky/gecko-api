@@ -6,7 +6,6 @@ import sendgrid
 from sendgrid.helpers.mail import Mail, Email, To, Content
 
 def send_notification(API_KEY, subject, message):
-    # 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
     sg = sendgrid.SendGridAPIClient(api_key=API_KEY)
     from_email = Email("luka.farkas@gmail.com")  # Replace with your SendGrid email
     to_email = To("luka.farkas@gmail.com")  # Replace with the recipient's email
@@ -77,7 +76,7 @@ def main(pause_duration):
     while True:
         # Your main code logic here
         print("Running analysis...")
-        
+        api_key = read_api_key("api_key.txt")
         file_path = 'Idena.txt'
         data = read_and_process_data(file_path)
         significant_changes = analyze_price_changes(data)
@@ -88,13 +87,12 @@ def main(pause_duration):
             subject = f"Idena price change {change['price_change']:.2%}"
             # print(f"Significant change from {change['start']} to {change['end']}: {change['price_change']:.2%}")
             # print("Waiting for the next iteration...")
-            send_notification('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',subject,message )
+            send_notification(api_key,subject,message )
         time.sleep(pause_duration)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Monitor and analyze price changes.")
     parser.add_argument("-p", "--pause", type=int, default=60, help="Pause duration between iterations in seconds.")
-    
     args = parser.parse_args()
     
     main(args.pause)
