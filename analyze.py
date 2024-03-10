@@ -94,4 +94,5 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--pause", type=int, default=60, help="Pause duration between iterations in seconds.")
     args = parser.parse_args()
     api_key = read_api_key("api_key.txt")
+    send_notification(api_key, "Analyze started", 'initial message')
     main(args.pause,api_key)
