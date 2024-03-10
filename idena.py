@@ -25,7 +25,7 @@ def main():
             price = float(price_data["data"]["attributes"]["token_prices"][token_address])
             price = round(price, 5)
             now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            print(f"Price of {token_name} at {now} is {price}")
+            #print(f"Price of {token_name} at {now} is {price}")
 
             # Save to a file
             with open(f"{token_name}.txt", "a") as file:

@@ -24,5 +24,5 @@ python3 analyze.py
 
 echo "Scripts execution completed."
 
-# ./run_scripts.sh 60
+# ./run.sh 60
 # chmod +x run_scripts.sh
