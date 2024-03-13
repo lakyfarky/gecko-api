@@ -26,3 +26,4 @@ echo "Scripts execution completed."
 
 # ./run.sh 60
 # chmod +x run_scripts.sh
+# nohup timeout 60 nohup python3 analyze.py >> output.log 2>&1 &

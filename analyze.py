@@ -72,11 +72,26 @@ def analyze_price_changes(data, analysis_period=timedelta(hours=1), interval=tim
     
     return significant_changes
 
+def trim_file_to_last_10_lines(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+    
+    if len(lines)>200:
+        # Keep only the last 10 lines
+        last_10_lines = lines[-10:]
+        
+        with open(file_path, 'w') as file:
+            file.writelines(last_10_lines)
+        
 def main(pause_duration, api_key):
+    delete = 0
     while True:
+        file_path = 'Idena.txt'
+        delete +=1
+        if delete >=100:
+            trim_file_to_last_10_lines(file_path)
         # Your main code logic here
         print("Running analysis...")
-        file_path = 'Idena.txt'
         data = read_and_process_data(file_path)
         significant_changes = analyze_price_changes(data)
         
