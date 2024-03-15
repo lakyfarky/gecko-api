@@ -17,6 +17,7 @@ def send_notification(API_KEY, subject, message):
     print(response.status_code)
     print(response.body)
     print(response.headers)
+    time.sleep(300)
 
 def read_api_key(filepath):
     """Reads the first line of a file and uses it as the API key."""
@@ -86,7 +87,7 @@ def trim_file_to_last_10_lines(file_path):
 def main(pause_duration, api_key):
     delete = 0
     while True:
-        file_path = 'Idena.txt'
+        file_path = 'idena.txt'
         delete +=1
         if delete >=100:
             trim_file_to_last_10_lines(file_path)
@@ -101,7 +102,7 @@ def main(pause_duration, api_key):
             subject = f"Idena price change {change['price_change']:.2%}"
             # print(f"Significant change from {change['start']} to {change['end']}: {change['price_change']:.2%}")
             # print("Waiting for the next iteration...")
-            send_notification(api_key,subject,message )
+            send_notification(api_key,subject,message)
         time.sleep(pause_duration)
 
 if __name__ == "__main__":
@@ -109,5 +110,5 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--pause", type=int, default=60, help="Pause duration between iterations in seconds.")
     args = parser.parse_args()
     api_key = read_api_key("api_key.txt")
-    send_notification(api_key, "Analyze started", 'initial message')
+    send_notification(api_key, "Bitmart analyze started", 'initial message')
     main(args.pause,api_key)

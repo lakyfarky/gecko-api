@@ -16,7 +16,7 @@ def fetch_token_price(token_address):
 
 def main():
     token_address = "0x0de08c1abe5fb86dd7fd2ac90400ace305138d5b"
-    token_name = "Idena"  # Enter the token name manually here
+    token_name = "idena"  # Enter the token name manually here
 
     while True:
         price_data = fetch_token_price(token_address)
