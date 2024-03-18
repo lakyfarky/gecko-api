@@ -30,7 +30,7 @@ def read_api_key(filepath):
         return None
 
 # Example usage
-api_key_filepath = 'Idena.txt'
+api_key_filepath = 'idena.txt'
 api_key = read_api_key(api_key_filepath)
 if api_key:
     print("API Key:", api_key)
